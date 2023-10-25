@@ -39,7 +39,18 @@ def fileSelectWindow():
         myList.append(response)
 
         #prints list so you can see what your working with
-        print(myList)
+        #print(myList)
+        Ip1 = myList[0]
+        Ip2 = Ip1[0:10]
+        print(Ip2)
+
+        return myList
+
+#def loadIps():
+    #l = fileSelectWindow()
+    #print(l)
+
+
 
 
 
@@ -51,9 +62,11 @@ mainWindow.geometry('500x500')
 
 #Create buttons
 selectFile = customtkinter.CTkButton(mainWindow, text='Select File', font=("Inter", 10), command = fileSelectWindow)
+#loadIp = customtkinter.CTkButton(mainWindow, text='load', font=("Inter", 10), command = loadIps)
 
 #Place Buttons in window
 selectFile.place(x=200, y=450)
+#loadIp.place(x=100, y=100)
 
 
 
