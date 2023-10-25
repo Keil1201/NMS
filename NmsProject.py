@@ -42,7 +42,10 @@ def fileSelectWindow():
         #print(myList)
         Ip1 = myList[0]
         Ip2 = Ip1[0:10]
+        Ip3= myList[0]
+        ip4 = Ip3[10:20]
         print(Ip2)
+        print(ip4)
 
         return myList
 
