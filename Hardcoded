@@ -1,0 +1,90 @@
+import tkinter
+from pythonping import ping
+import os
+from numpy import loadtxt
+from tkinter import *
+from tkinter import filedialog as fd
+import customtkinter
+
+#Create main window for app
+mainWindow = customtkinter.CTk()
+customtkinter.set_appearance_mode("dark")
+canvas = Canvas()
+
+#Create File Select window
+def fileSelectWindow():
+    #define accepted file types
+    filetypes = (
+        ('text files', '*.txt'),
+        ('All files', '*.*')
+    )
+
+    #select file
+    file = fd.askopenfile(
+        title='Open a file',
+        initialdir='/',
+        filetypes=filetypes)
+    with file as f:
+        ipList=f.read()
+        ipList= ipList.splitlines()
+        print(ipList)
+        print(ipList[1])
+        print(ipList[0])
+        os.system(f"ping -n 1 {ipList[1]}")
+        os.system(f"ping -n 1 {ipList[0]}")
+        label = customtkinter.CTkLabel(mainWindow, text="hi")
+        label.place(x=100, y=200)
+    #for line in ipList:
+        #creates list to store ping ouput
+        #x= line.strip()
+        #myList=[]
+        #print(line)
+        #os.system(f"ping -n 1 {x}")
+        #response = os.system(f"ping -n 1 {line}")
+        #myList.append(response)
+        #if("Request timed out." or "unreachable") in response:
+
+        #creates a lable to display IP and latency, im thinking we'll just cut the sections we want
+        #out of the elements in the array and assign them to an individual label
+
+        label = customtkinter.CTkLabel(master = frame, text="hi", text_color="white")
+        label.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
+
+
+        #prints list so you can see what your working with
+        #print(myList)
+
+
+        #return myList
+
+#def loadIps():
+    #l = fileSelectWindow()
+    #print(l)
+
+
+
+
+
+
+
+
+#Set window width and height
+mainWindow.geometry('500x500')
+frame = customtkinter.CTkFrame(master = mainWindow, width = 450, height = 350, border_color="grey")
+frame.pack(padx=50, pady=50)
+
+#Create buttons
+selectFile = customtkinter.CTkButton(mainWindow, text='Select File', font=("Inter", 10), command = fileSelectWindow)
+#loadIp = customtkinter.CTkButton(mainWindow, text='load', font=("Inter", 10), command = loadIps)
+title = customtkinter.CTkLabel(mainWindow, text = 'Network Monitoring Systems', corner_radius= 10, fg_color= 'grey', text_color='white')
+
+#Place Buttons in window
+selectFile.place(x=175, y=450)
+title.place(x=145, y=15)
+#loadIp.place(x=100,y=100)
+
+
+
+
+#runs app
+mainWindow.mainloop()
