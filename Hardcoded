@@ -27,13 +27,16 @@ def fileSelectWindow():
     with file as f:
         ipList=f.read()
         ipList= ipList.splitlines()
-        print(ipList)
-        print(ipList[1])
-        print(ipList[0])
-        os.system(f"ping -n 1 {ipList[1]}")
-        os.system(f"ping -n 1 {ipList[0]}")
-        label = customtkinter.CTkLabel(mainWindow, text="hi")
-        label.place(x=100, y=200)
+        #print(ipList)
+        #print(ipList[1])
+        #print(ipList[0])
+        op = os.popen(f"ping -n 1 {ipList[1]}").read()
+        os.popen(f"ping -n 1 {ipList[0]}").read()
+        op1 = op[10:50]
+        print(op1)
+        label = customtkinter.CTkLabel(master=frame, text=op1, text_color="white")
+        label.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
+
     #for line in ipList:
         #creates list to store ping ouput
         #x= line.strip()
@@ -47,8 +50,7 @@ def fileSelectWindow():
         #creates a lable to display IP and latency, im thinking we'll just cut the sections we want
         #out of the elements in the array and assign them to an individual label
 
-        label = customtkinter.CTkLabel(master = frame, text="hi", text_color="white")
-        label.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
+
 
 
         #prints list so you can see what your working with
