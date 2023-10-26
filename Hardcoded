@@ -79,10 +79,17 @@ frame.pack(padx=50, pady=50)
 selectFile = customtkinter.CTkButton(mainWindow, text='Select File', font=("Inter", 10), command = fileSelectWindow)
 #loadIp = customtkinter.CTkButton(mainWindow, text='load', font=("Inter", 10), command = loadIps)
 title = customtkinter.CTkLabel(mainWindow, text = 'Network Monitoring Systems', corner_radius= 10, fg_color= 'grey', text_color='white')
+ipLabel = customtkinter.CTkLabel(master = frame, text = 'IP', corner_radius= 10, fg_color= 'grey', text_color='white')
+latencyLabel = customtkinter.CTkLabel(master= frame, text = 'Latency', corner_radius= 10, fg_color= 'grey', text_color='white')
+statusLabel = customtkinter.CTkLabel(master=frame, text = 'Status', corner_radius= 10, fg_color= 'grey', text_color='white')
 
 #Place Buttons in window
 selectFile.place(x=175, y=450)
 title.place(x=145, y=15)
+ipLabel.place(x=50, y=15)
+latencyLabel.place(x=200, y = 15)
+statusLabel.place(x=300, y=15)
+
 #loadIp.place(x=100,y=100)
 
 
